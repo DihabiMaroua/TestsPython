@@ -23,10 +23,21 @@ jobs:
       - name: Run tests
         run: |
           pytest
-          
+
       - name: Run tests with coverage
         run: |
           pip install coverage
           coverage run -m pytest
           coverage report
 
+      - name: Vérification qualité du code
+        run: |
+          flake8 .
+
+      - name: Mesure du temps de test
+        run: |
+          start=$(date +%s)
+          pytest
+          end=$(date +%s)
+          echo "Durée des tests : $((end-start)) secondes"
+  
