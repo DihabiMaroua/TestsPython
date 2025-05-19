@@ -1,2 +1,4 @@
 def division(a, b):
-    return a // b  # erreur volontaire
+    if b == 0:
+        raise ValueError("Division par zéro interdite.")
+    return a / b
